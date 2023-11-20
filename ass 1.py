@@ -1,4 +1,3 @@
-
 def calculate_monthly_installment(principle_loan_amount, annual_interest_rate, loan_term_years):
     monthly_interest_rate = annual_interest_rate / 12 / 100
     total_payment = loan_term_years * 12 
@@ -83,3 +82,5 @@ def main():
             print("Invalid choice. Please enter 1, 2, or 3.")
 
 
+
+            
