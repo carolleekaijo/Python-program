@@ -1,16 +1,16 @@
 
 def calculate_monthly_installment(principle_loan_amount, annual_interest_rate, loan_term_years):
     monthly_interest_rate = annual_interest_rate / 12 / 100
-    total_payment = loan_term_years * 12 
-    monthly_installment = (principle_loan_amount * monthly_interest_rate * (1 + monthly_interest_rate) *total_payment / ((1 + monthly_interest_rate) *total_payment  - 1))
+    payment_term = loan_term_years * 12 
+    monthly_installment = (principle_loan_amount * monthly_interest_rate * (1 + monthly_interest_rate) *payment_term / ((1 + monthly_interest_rate) *payment_term  - 1))
     return monthly_installment
 
 def calculate_total_payable(monthly_installment, total_year):
     total_payable = monthly_installment * total_year 
     return total_payable
-
+ 
 def calculate_dsr(housing_loan, gross_monthly_income, monthly_commitment):
-    dsr = ((housing_loan + monthly_commitment) / gross_monthly_income) * 100
+    dsr = ((housing_loan + monthly_commitment) / gross_monthly_income) 
     return dsr
 
 def main():
@@ -18,7 +18,7 @@ def main():
 
     while True:
         # Menu
-        print("\nMenu:")
+        print("Menu:")
         print("1. Calculate a new loan")
         print("2. Display all previous loan calculations")
         print("3. Exit")
@@ -26,11 +26,12 @@ def main():
 
         if choice == "1":
             # Get user inputs
-            principle_loan_amount = float(input("Enter the principle loan amount: "))
+            principle_loan_amount = float(input("Enter the principle loan amount(RM): "))
             annual_interest_rate = float(input("Enter the annual interest rate (%): "))
             loan_term_years = int(input("Enter the loan term in years: "))
-            gross_monthly_income = float(input("Enter the gross monthly income: "))
-            other_monthly_commitment = float(input("Enter the total of other monthly commitment: "))
+            gross_monthly_income = float(input("Enter the gross monthly income(RM): "))
+            other_monthly_commitment = float(input("Enter the total of other monthly commitment(RM): "))
+
     
             # Calculate the monthly instalment for the housing loan
             monthly_installment = calculate_monthly_installment(principle_loan_amount, annual_interest_rate, loan_term_years)
@@ -51,10 +52,9 @@ def main():
                 eligibility = "Loan applicant is not eligible."
     
             # Display results
-            print("\nMonthly Instalment: ${:.2f}".format(monthly_installment))
-            print("Debt Service Ratio (DSR): {:.2f}%".format(dsr))
+            print("Monthly Instalment: RM{:.2f}".format(monthly_installment))
+            print("Debt Service Ratio (DSR): {:1.2f}%".format(dsr))
             print(eligibility)
-    
             # Store loan calculation details
             loan_details = {
                 "Loan Amount": principle_loan_amount,
@@ -66,6 +66,7 @@ def main():
                 "Eligibility": eligibility 
             }
             loan_calculations.append(loan_details)
+    
 
         elif choice == "2":
             # Display all previous loan calculations
@@ -74,6 +75,7 @@ def main():
                 print(f"\nCalculation {idx}:")
                 for key, value in calculation.items():
                     print(f"{key}: {value}")
+            
 
         elif choice == "3":
             print("Exiting the program. Goodbye!")
