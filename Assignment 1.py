@@ -1,8 +1,8 @@
 
 def calculate_monthly_installment(principle_loan_amount, annual_interest_rate, loan_term_years):
     monthly_interest_rate = annual_interest_rate / 12 / 100
-    payment_term = loan_term_years * 12 
-    monthly_installment = (principle_loan_amount * monthly_interest_rate * (1 + monthly_interest_rate) *payment_term / ((1 + monthly_interest_rate) *payment_term  - 1))
+    total_num_payment = loan_term_years * 12 
+    monthly_installment = (principle_loan_amount * monthly_interest_rate * (1 + monthly_interest_rate) **total_num_payment / ((1 + monthly_interest_rate) **total_num_payment  - 1))
     return monthly_installment
 
 def calculate_total_payable(monthly_installment, total_year):
